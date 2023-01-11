@@ -42,13 +42,32 @@ for(let i = 0; i < 200; i++) {
 
 console.log(arr);
 
+console.log('');
+console.log('=========');
+console.log('');
 
-
-
-
-// 2. Создайте функцию getSumm([n1, n2, nn...]) которая будет суммировать все просыте числа 
+// 2. Создайте функцию getSumm([n1, n2, nn...]) которая будет суммировать все простые числа 
 // (для проверки используйте функцию из первой задачи) по модулю, переданные массивом. 
-// Еспользуйте метод .reduce();
+// Используйте метод .reduce();
+
+function getSumm(arr) {
+    let primeArray = arr.filter(function(el) {
+        return isPrime(el) == true;
+    });
+
+    let summ = primeArray.reduce(function(acc, el) {
+        return acc + el;
+    });
+
+    return summ;
+}
+
+console.log(getSumm([2, 3, 5, 7, 11]));
+console.log(getSumm([-4, 0, 2, 3, 5, 6, 20]));
+
+console.log('');
+console.log('=========');
+console.log('');
 
 // 3. Напишите функцию getRange(arr, a, b), которая будет возвращать НОВЫЙ массив чисел из переданного arr, 
 // которые попадут в диапазон от a до b. И отсортирует их в порядке возрвстания 
@@ -58,6 +77,29 @@ console.log(arr);
 
 // filtered; // [1, 3]
 
+function getRange(arr, a, b) {
+    
+    function compareNumeric(a, b) {
+        if (a > b) return 1;
+        if (a == b) return 0;
+        if (a < b) return -1;
+    }
+    
+    let sorted = arr.sort(compareNumeric);
+    
+    return ranged = sorted.filter(function(el) {
+        return el >= a && el <= b;
+    });
+
+}
+
+console.log(getRange([10, 5, -4, -7, 8, -20], -10, 10));
+console.log(getRange([20, 1, 6, 8], 5, 10));
+
+console.log('');
+console.log('=========');
+console.log('');
+
 
 // 4. Напишите функцию toLess(arr), которая будет сортировать (метод .sort()) 
 // числа в переданном массиве arr в порядке убывания. Например:
@@ -66,6 +108,18 @@ console.log(arr);
 
 // arr; // [8, 5, 2, 1, -10]
 
+function toLess(arr) {
+    function compareNumeric(a, b) {
+        if (a < b) return 1;
+        if (a == b) return 0;
+        if (a > b) return -1;
+    }
+
+    return arr.sort(compareNumeric);
+}
+
+console.log(toLess([11, 6, -4, -5, 3, -30]));
+console.log(toLess([56, -4, 2, 7, 15, -22]));
 
 // 5. Напишите функцию sortByAge(users), которая принимает массив 
 // с именем и возрастом и сортирует их по возрасту. Например:
