@@ -52,18 +52,16 @@ console.log('');
 
 function getSumm(arr) {
     let primeArray = arr.filter(function(el) {
-        return isPrime(el) == true;
+        return isPrime(Math.abs(el)) == true;
     });
 
-    let summ = primeArray.reduce(function(acc, el) {
-        return acc + el;
-    });
-
-    return summ;
+    return primeArray.reduce(function(acc, el) {
+        return Math.abs(acc) + Math.abs(el);
+    });    
 }
 
 console.log(getSumm([2, 3, 5, 7, 11]));
-console.log(getSumm([-4, 0, 2, 3, 5, 6, 20]));
+console.log(getSumm([-4, -3, 0, 2, 3, 5, 6, 20]));
 
 console.log('');
 console.log('=========');
@@ -87,10 +85,9 @@ function getRange(arr, a, b) {
     
     let sorted = arr.sort(compareNumeric);
     
-    return ranged = sorted.filter(function(el) {
+    return sorted.filter(function(el) {
         return el >= a && el <= b;
     });
-
 }
 
 console.log(getRange([10, 5, -4, -7, 8, -20], -10, 10));
