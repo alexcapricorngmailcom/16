@@ -118,6 +118,11 @@ function toLess(arr) {
 console.log(toLess([11, 6, -4, -5, 3, -30]));
 console.log(toLess([56, -4, 2, 7, 15, -22]));
 
+console.log('');
+console.log('=========');
+console.log('');
+
+
 // 5. Напишите функцию sortByAge(users), которая принимает массив 
 // с именем и возрастом и сортирует их по возрасту. Например:
 // let bill = ["Билл", 25];
@@ -127,3 +132,24 @@ console.log(toLess([56, -4, 2, 7, 15, -22]));
 // let arr = [ bill, mark, linus ];
  
 // sortByAge(arr); // [bill, masha, linus]
+
+let bill = ["Билл", 25];
+let mark = ["Марк", 30];
+let john = ["Джон", 37];
+let linus = ["Линус", 28];
+
+let listOfUsers = [bill, john, mark, linus];
+
+function sortByAge(users) {
+
+    function compareNumeric(a, b) {
+        if (a[1] > b[1]) return 1;
+        if (a[1] == b[1]) return 0;
+        if (a[1] < b[1]) return -1;
+    }
+
+    return users.sort(compareNumeric);
+
+}
+
+console.log(sortByAge(listOfUsers));
